@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 10</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body class="bg-gray">
+    <header id="main-header" class="bg-darkBlue p-8">
+      <div class="container flex justify-center">
+        <form action="" id="todo-form" class="mt-6">
+          <h1 class="text-white text-4xl font-bold text-start p-2 m-2">
+            Today
+          </h1>
+          <input
+            type="text"
+            name="task-name"
+            placeholder="e.g Buy Groceries"
+            autofocus
+            class="p-2 rounded-sm bg-lightBlue"
+          />
+          <button class="bg-orange rounded-sm p-2 text-white" type="submit">
+            Add Task
+          </button>
+        </form>
+      </div>
+    </header>
+
+    <section>
+      <div class="container" id="main-content">
+        <ul class="stats flex justify-center m-4">
+          <li class="m-2 text-white">
+            <span class="bg-darkBlue p-2 rounded-md"
+              >Remaining
+              <span id="remaining-tasks" class="bg-gray p-2 -mr-3 text-darkBlue"
+                >0</span
+              ></span
+            >
+          </li>
+          <li class="m-2 text-white">
+            <span class="bg-darkBlue p-2 rounded-md"
+              >Completed
+              <span id="completed-tasks" class="bg-gray p-2 -mr-3 text-darkBlue"
+                >0</span
+              ></span
+            >
+          </li>
+          <li class="m-2 text-white">
+            <span class="bg-darkBlue p-2 rounded-md"
+              >Total<span
+                id="total-tasks"
+                class="bg-gray p-2 ml-1 -mr-3 text-darkBlue"
+              ></span
+            ></span>
+          </li>
+        </ul>
+
+        <ul class="todos mt-8 m-auto">
+          <!-- <li class="w-80 text-start">
+            <div class="bg-white p-4 rounded-sm align-middle">
+              <input
+                type="checkbox"
+                name="tasks"
+                id="1"
+                class="mr-2 align-middle"
+              />
+              <span>Task 01</span>
+              <button title="Remove Task" class="remove-task">
+                rem
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M17.25 17.25L6.75 6.75"
+                    stroke="#A4D0E3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M17.25 6.75L6.75 17.25"
+                    stroke="#A4d0E3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container flex justify-center mt-60 bg-black text-white p-4">
+        <p>
+          <small>Design by</small
+          ><a href="https://sannya-wasim.github.io/Profile/"> Sannya Wasim</a>
+        </p>
+      </div>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
