@@ -1,0 +1,295 @@
+:root {
+  --white: #ffffff;
+  --primaryColor: #e63946;
+  --lightBlueShade: #a8dadc;
+  --blueShade: #457b9d;
+  --black: black;
+}
+
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+.button {
+  color: var(--white);
+  background-color: var(--primaryColor);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+.button:hover {
+  background-color: var(--blueShade);
+  color: var(--white) !important;
+  border-bottom: none !important;
+}
+.cover-div {
+  max-width: 1024px;
+  margin: auto;
+}
+
+/* Navigation Bar */
+#nav-div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+#navigation-bar > ul {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+}
+#navigation-bar > ul > li {
+  margin: 0 1rem;
+}
+.nav-element {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.nav-element > img {
+  height: 20px;
+  padding-top: 5px;
+}
+#nav-ul {
+  color: var(--black);
+  font-weight: 600;
+}
+#nav-ul li a:hover {
+  color: var(--primaryColor);
+  border-bottom: 3px solid var(--black);
+  /* margin-bottom: 5px;
+  transition: margin 2s; */
+}
+.dropdown-li > a:hover {
+  border-bottom: none !important;
+}
+.dropdown-li {
+  position: relative;
+}
+.dropdown li {
+  list-style-type: none;
+  padding: 0.2rem 0;
+}
+.dropdown a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 600;
+}
+.dropdown a:hover {
+  color: var(--primaryColor);
+  text-decoration: underline;
+  text-decoration-color: var(--black);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+.dropdown {
+  position: absolute;
+  border: 2px solid var(--primaryColor);
+  border-radius: 8px;
+  width: 150px;
+  padding: 1rem;
+  background-color: white;
+  /* margin-top: 1rem; */
+}
+
+/* Intro Section */
+#intro-section .cover-div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+}
+#intro-text {
+  flex-basis: 48%;
+  height: 200px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  gap: 5%;
+}
+#cover-photo {
+  flex-basis: 48%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  overflow: hidden;
+  transition: border-top-left-radius 2s, border-bottom-right-radius 2s;
+}
+#cover-photo:hover {
+  border-top-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+#cover-photo > img {
+  width: 100%;
+}
+
+/* Services Section */
+#service-div {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem auto auto auto;
+}
+#services {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#services > a {
+  margin: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  width: 13rem;
+  margin : 1rem;
+  padding : 1rem;
+}
+
+
+#service-element {
+  flex-basis: 12%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 1.5rem;
+  border: 3px solid var(--white);
+  margin: 0px;
+  transition: margin 0.8s;
+}
+#service-element:hover {
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#service-element img {
+  height: 230px;
+  width: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+/* Pets Section */
+#pets-section {
+  margin: 5rem 0;
+  text-align : center;
+}
+
+#pets {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.pet-card {
+  padding: 1rem;
+  flex-basis: 33%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  transition: background-color 0.2s, border 0.2s;
+  border-radius: 10px;
+}
+.pet-card:hover {
+  padding-top: 1rem;
+  border: 2px solid black;
+  box-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.pet-card > img {
+  height: 250px;
+  width: 100%;
+  border-radius: 10px;
+}
+.right-arrow {
+  height: 40px;
+  width: 40px;
+  filter : invert(1);
+}
+.arrow-button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: var(--primaryColor);
+  width: 150px;
+  transition: gap 0.3s, width 0.3s;
+  border: 2px solid white;
+}
+.arrow-button > a {
+  color: white;
+}
+.arrow-button:hover {
+  gap: 15px;
+  width: 170px;
+}
+
+/* Products Section */
+#products-section {
+  margin: 5rem 0;
+  text-align : center;
+}
+#products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+  padding: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.product-card {
+  padding: 1rem;
+  flex-basis: 31%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid var(--primaryColor);
+  transition: background-color 0.5s, border 0.5s;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.product-card > img {
+  height: 250px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Stolen Pets Section */
+#stolen-pets-section {
+  background-color: var(--lightBlueShade);
+  margin-top: -2rem;
+}
+.stolen-pets-div {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 1.5rem;
+}

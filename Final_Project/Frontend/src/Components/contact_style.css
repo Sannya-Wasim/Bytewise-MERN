@@ -1,0 +1,58 @@
+.content {
+    display: flex;
+    background: -webkit-linear-gradient(
+      left,
+      rgba(34, 193, 195, 1) 0%,
+      rgba(253, 187, 45, 1) 100%
+    );
+    border-radius: 30px;
+    height: 80vh;
+    margin: auto;
+    margin-top: 15px;
+    /* display: flex; */
+    width: 80%;
+  }
+  .image h1 {
+    font-size: 40px;
+    text-align: center;
+    color: cornsilk;
+  }
+  
+  .image {
+    width: 35%;
+    height: 500px;
+    margin-top: 142px;
+  }
+  
+  .image img {
+    width: 100px;
+    height: 100px;
+    margin: 0px 0px 20px 119px;
+  }
+  .for {
+    padding: 27px;
+    margin: auto;
+  }
+  .for form input {
+    padding: 10px;
+    margin: 8px;
+    background-color: gainsboro;
+    width: 60vh;
+    border-radius: 20px;
+    border: none;
+  }
+  .for form textarea {
+    margin-top: 10px;
+    /* background-color:gainsboro; */
+    border-radius: 10px;
+  }
+  .for form button {
+    padding: 10px;
+    font-size: 20px;
+    align-items: center;
+    background-color: rgba(34, 193, 195, 1);
+    color: white;
+    border: none;
+    border-radius: 20px;
+  }
+  
