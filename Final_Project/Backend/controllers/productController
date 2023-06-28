@@ -1,0 +1,24 @@
+const Products = require('../models/Products.js')
+const Pets = require('../models/Pets.js')
+
+const productController = require('express').Router();
+
+productController.get('/products', async(req,res)=>{
+    try {
+        const products = await Products.find();
+        res.json(products)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+productController.get('/pets', async(req,res)=>{
+    try {
+        const pets = await Pets.find();
+        res.json(pets)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+module.exports = productController;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 import "./Products.css";
+import Navbar from '../elements/NavBar'
 
 function Pets() {
   const [data, setData] = useState([]);
@@ -12,8 +13,7 @@ function Pets() {
   useEffect(() => {
     const getPets = async () => {
       setLoading(true);
-    //   const response = await fetch("http://localhost:5000/pets");
-      const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch("http://localhost:5000/api/pets");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -59,23 +59,17 @@ function Pets() {
           <button class="Button" onClick={() => setFilter(data)}>
             All Products
           </button>
-          <button
-            class="Button"
-            onClick={() => filterPets(1)}
-          >
-            Men's Clothing
+          <button class="Button" onClick={() => filterPets("Dogs")}>
+            Dogs
           </button>
-          <button
-            class="Button"
-            onClick={() => filterPets(2)}
-          >
-            Women's Clothing
+          <button class="Button" onClick={() => filterPets("Cats")}>
+            Cats
           </button>
-          <button class="Button" onClick={() => filterPets(3)}>
-            Jewellery
+          <button class="Button" onClick={() => filterPets("Parrots")}>
+            Parrots
           </button>
-          <button class="Button" onClick={() => filterPets(4)}>
-            Electronics
+          <button class="Button" onClick={() => filterPets("Fish")}>
+            Fishes
           </button>
         </div>
 
@@ -83,14 +77,13 @@ function Pets() {
           {filter.map((pet) => {
             return (
               <div key={pet.id} className="productCard">
-                <img
-                  src={pet.image}
-                  alt={pet.title}
-                />
+                <img src={pet.image} alt={pet.title} />
                 <div>
                   <h5>{pet.title.substring(0, 12)}...</h5>
-                  <p style={{marginBottom : '1rem'}}>${pet.price}</p>
-                  <NavLink className="productLink" to={`${pet.id}`}>Buy Now</NavLink>
+                  <p style={{ marginBottom: "1rem" }}>${pet.price}</p>
+                  <NavLink className="productLink" to={`${pet.id}`}>
+                    Buy Now
+                  </NavLink>
                 </div>
               </div>
             );
@@ -102,11 +95,13 @@ function Pets() {
 
   return (
     <div>
+      <div id="nav-div">
+        <h1>Mithoo</h1>
+        <Navbar />
+      </div>
       <div>
         <div>
-          <h1 style={{ textAlign: "center", margin: "1rem" }}>
-            Latest Pets
-          </h1>
+          <h1 style={{ textAlign: "center", margin: "1rem" }}>Latest Pets</h1>
           <hr />
         </div>
         <div>{loading ? <Loading /> : <ShowPets />}</div>

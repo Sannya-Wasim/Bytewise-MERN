@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 
 const authController = require('./controllers/authController')
+const productController = require('./controllers/productController')
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authController)
+app.use('/api', productController)
 
 app.listen(process.env.PORT, () =>
   console.log(`Server has started successfully...`)

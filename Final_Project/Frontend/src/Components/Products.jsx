@@ -13,7 +13,7 @@ function Products({ type }) {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("http://localhost:5000/api/products");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -61,21 +61,21 @@ function Products({ type }) {
           </button>
           <button
             class="Button"
-            onClick={() => filterProduct("men's clothing")}
+            onClick={() => filterProduct("Food")}
           >
-            Men's Clothing
+            Food
           </button>
           <button
             class="Button"
-            onClick={() => filterProduct("women's clothing")}
+            onClick={() => filterProduct("Toys")}
           >
-            Women's Clothing
+            Toys
           </button>
-          <button class="Button" onClick={() => filterProduct("jewelery")}>
-            Jewellery
+          <button class="Button" onClick={() => filterProduct("Beds")}>
+            Beds
           </button>
-          <button class="Button" onClick={() => filterProduct("electronics")}>
-            Electronics
+          <button class="Button" onClick={() => filterProduct("Leashes")}>
+            Leashes
           </button>
         </div>
 
