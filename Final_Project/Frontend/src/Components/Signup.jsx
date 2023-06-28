@@ -3,26 +3,39 @@ import "./singup_styles.css";
 import copy from "../assets/images/logo copy.png";
 import NavBar from "../elements/NavBar";
 import Axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSignup = () => {
-    Axios.post(`http://localhost:5000/signup`, {
-      // Axios.post(`${process.env.BASE_URL}/signup`, {
-      name,
-      password,
-      email,
-      address,
-      phone,
-    }).then((e) => {
-      //TODO: Store in local storage
-    });
-    localStorage.setItem("user", "loggedIn");
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      if (confirmPassword !== password)
+        throw new Error("Passwords are not the same");
+      const res = await fetch("http://localhost:5000/auth/signup", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({ username, email, password }),
+      });
+      if (res.status !== 200) throw new Error("Wrong Credentials!");
+      const data = await res.json();
+      console.log(data);
+      navigate("/");
+    } catch (error) {
+      setError((prev) => true);
+      setTimeout(() => {
+        setError((prev) => true);
+      }, 2500);
+      console.log(error);
+    }
   };
 
   return (
@@ -54,9 +67,9 @@ function SignUp() {
                 <div className="input">
                   <input
                     type="text"
-                    placeholder="Enter your Name"
+                    placeholder="Enter your Username"
                     onChange={(e) => {
-                      setName(e.target.value);
+                      setUsername(e.target.value);
                     }}
                   />
                 </div>
@@ -66,15 +79,6 @@ function SignUp() {
                     placeholder="Enter your Email"
                     onChange={(e) => {
                       setEmail(e.target.value);
-                    }}
-                  />
-                </div>
-                <div className="input">
-                  <input
-                    type="text"
-                    placeholder="Enter your address"
-                    onChange={(e) => {
-                      setAddress(e.target.value);
                     }}
                   />
                 </div>
@@ -92,16 +96,12 @@ function SignUp() {
                 <div className="input">
                   <input
                     type="text"
-                    placeholder="Contact Number"
+                    placeholder="Confirm Password"
                     onChange={(e) => {
-                      setPhone(e.target.value);
+                      setConfirmPassword(e.target.value);
                     }}
                   />
                 </div>
-                {/* <div className="input">
-                  <input type="file" id="imageFile" accept="image/*" />
-                </div> */}
-
                 <div className="labels">
                   <div id="checkbox">
                     <input type="checkbox" name="remember_me" id="" /> Remember
@@ -111,8 +111,15 @@ function SignUp() {
                     <button onClick={handleSignup}>Sign Up</button>{" "}
                   </div>
                 </div>
+                <div>
+                  <p>
+                    Already a member? Click here to{" "}
+                    <Link to="/login">Login!</Link>
+                  </p>
+                </div>
               </div>
             </form>
+            {error && <div>Wrong Credentials! Try different ones.</div>}
           </div>
         </section>
       </section>

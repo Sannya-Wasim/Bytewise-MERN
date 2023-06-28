@@ -3,25 +3,49 @@ import "./login_styles.css";
 import copy from "../assets/images/logo copy.png";
 import NavBar from "../elements/NavBar";
 import Axios from "axios";
+import {Link, useNavigate} from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [username, setUsername] = useState("dummy");
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    Axios.get("http://localhost/5000/login", { email, password }).then(
-      (response) => {
-        console.log(response);
+  const handleLogin = async(e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:5000/auth/login", {
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        method: "POST",
+        body : JSON.stringify({email, password})
+      })
+      const data = await res.json();
+      if (res.status === !200){
+        throw new Error("Wrong Credentials")
       }
-    );
-    localStorage.setItem("user", "loggedIn");
+      else{
+        setUsername(()=>data.others.username)
+        console.log(username) 
+      }      
+      navigate('/');
+
+    } catch (error) {
+      setError(prev => true)
+      setTimeout(()=>{
+        setError(prev => true)
+      }, 2500)
+      console.log(error)
+    }
   };
 
   return (
     <div>
       <div id="nav-div">
         <h1>Mithoo</h1>
-        <NavBar />
+        <NavBar name={username}/>
       </div>
       <section id="bg">
         <section className="logo">
@@ -66,7 +90,15 @@ function Login() {
                   <button onClick={handleLogin}>Log In</button>{" "}
                 </div>
               </div>
+              <div><p>Haven't registered yet? Click here to <Link to='/signup'>Sign Up!</Link></p></div>
+
             </form>
+            {
+              error && 
+              <div className="error">
+                Wrong Credentials! Try different ones.
+              </div>
+            }
           </div>
         </section>
       </section>

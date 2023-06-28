@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 import "./Products.css";
+import Navbar from '../elements/NavBar'
 
 function Products({ type }) {
   const [data, setData] = useState([]);
@@ -82,14 +83,13 @@ function Products({ type }) {
           {filter.map((product) => {
             return (
               <div key={product.id} className="productCard">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                />
+                <img src={product.image} alt={product.title} />
                 <div>
                   <h5>{product.title.substring(0, 12)}...</h5>
-                  <p style={{marginBottom : '1rem'}}>${product.price}</p>
-                  <NavLink className="productLink" to={`${product.id}`}>Buy Now</NavLink>
+                  <p style={{ marginBottom: "1rem" }}>${product.price}</p>
+                  <NavLink className="productLink" to={`${product.id}`}>
+                    Buy Now
+                  </NavLink>
                 </div>
               </div>
             );
@@ -101,6 +101,10 @@ function Products({ type }) {
 
   return (
     <div>
+      <div id="nav-div">
+        <h1>Mithoo</h1>
+        <Navbar />
+      </div>
       <div>
         <div>
           <h1 style={{ textAlign: "center", margin: "1rem" }}>

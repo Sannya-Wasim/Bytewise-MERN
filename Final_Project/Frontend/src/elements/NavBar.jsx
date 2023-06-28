@@ -2,9 +2,10 @@ import { useState } from "react";
 import DropDown from "./Dropdown";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({name}) => {
   const productItems = ["Food Products", "Accessories", "Toys"];
   const petItems = ["Cats", "Dogs", "Parrots"];
+  console.log(name)
 
   const [showProductsDropDown, setProductsDropDown] = useState(false);
   const [showPetsDropDown, setPetsDropDown] = useState(false);
@@ -27,11 +28,16 @@ const NavBar = () => {
         <li>
           <Link to="/about">About Us</Link>
         </li>
+        <li>{name}</li>
         <li>
           <Link className="button" to="/login">
             Sign In
           </Link>
         </li>
+        {/* {
+          Name ? <li>{Name}</li> : null
+        } */}
+        
       </ul>
     </nav>
   );
