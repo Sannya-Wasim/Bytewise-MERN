@@ -46,10 +46,13 @@ const NavBar = () => {
               <Link className="button">{username}</Link>
             </li>
             <li>
-              <Link to="/cart">Cart {cartTotalQuantity}</Link>
+              <Link to="/cart">
+                Cart <span id="cart-span">{cartTotalQuantity}</span>
+              </Link>
             </li>
           </>
         )}
+        <li><Link to='/orders'>Orders</Link></li>
       </ul>
     </nav>
   );

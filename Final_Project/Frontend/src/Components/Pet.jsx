@@ -44,7 +44,7 @@ const Pet = () => {
             <br />
             <h3>Price: ${pet.price}</h3>
             <br/><br/>
-            <Link onClick={() => handleAddToCart(pet)}>
+            <Link onClick={() => handleAddToCart(pet)} to='/pets'>
               Add to Cart
             </Link>
           </div>

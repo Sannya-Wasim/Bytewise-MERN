@@ -69,6 +69,14 @@ a {
   /* margin-bottom: 5px;
   transition: margin 2s; */
 }
+
+#cart-span {
+  background-color: var(--primaryColor);
+  color: white;
+  border: 2px solid var(--primaryColor);
+  border-radius: 2px;
+  /* padding: 0.1rem; */
+}
 .dropdown-li > a:hover {
   border-bottom: none !important;
 }
@@ -154,10 +162,9 @@ a {
   cursor: pointer;
   text-decoration: none;
   width: 13rem;
-  margin : 1rem;
-  padding : 1rem;
+  margin: 1rem;
+  padding: 1rem;
 }
-
 
 #service-element {
   flex-basis: 12%;
@@ -174,7 +181,7 @@ a {
 #service-element:hover {
   border-radius: 10px;
   margin-bottom: 2rem;
-  box-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 #service-element img {
   height: 230px;
@@ -187,7 +194,7 @@ a {
 /* Pets Section */
 #pets-section {
   margin: 5rem 0;
-  text-align : center;
+  text-align: center;
 }
 
 #pets {
@@ -213,7 +220,7 @@ a {
 .pet-card:hover {
   padding-top: 1rem;
   border: 2px solid black;
-  box-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .pet-card > img {
   height: 250px;
@@ -223,7 +230,7 @@ a {
 .right-arrow {
   height: 40px;
   width: 40px;
-  filter : invert(1);
+  filter: invert(1);
 }
 .arrow-button {
   display: flex;
@@ -249,7 +256,7 @@ a {
 /* Products Section */
 #products-section {
   margin: 5rem 0;
-  text-align : center;
+  text-align: center;
 }
 #products {
   display: flex;

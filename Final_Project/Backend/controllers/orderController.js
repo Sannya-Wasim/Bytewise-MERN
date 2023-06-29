@@ -21,4 +21,13 @@ orderController.post("/", async (req, res) => {
     }
   });
 
+  orderController.get('/orders', async(req, res)=>{
+    try {
+      const orders = await Order.find();
+      res.json(orders);
+    } catch (error) {
+      throw new Error
+    }
+  })
+
   module.exports = orderController;

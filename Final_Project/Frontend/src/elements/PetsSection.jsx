@@ -23,7 +23,7 @@ const PetsSection = () => {
   return (
     <section id="pets-section">
       <div className="cover-div">
-        <h2>Pets To Be Adopted</h2>
+        <h2>Our Pets</h2>
         <div id="pets">
           {pets.map((pet) => {
             return (

@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import Product from "./Components/Product";
 import Pet from "./Components/Pet";
 import Cart from './Components/Cart';
+import Orders from './Components/Orders'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/pets" element={<Pets />}></Route>
         <Route path="/pets/:id" element={<Pet />}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
+        <Route path='/orders' element={<Orders/>}></Route>
       </Routes>
     </div>
   );
