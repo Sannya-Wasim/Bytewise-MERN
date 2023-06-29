@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./Products.css";
 import Navbar from '../elements/NavBar'
 
-function Products({ type }) {
+function Products() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
@@ -87,7 +87,7 @@ function Products({ type }) {
                 <div>
                   <h5>{product.title.substring(0, 12)}...</h5>
                   <p style={{ marginBottom: "1rem" }}>${product.price}</p>
-                  <NavLink className="productLink" to={`${product.id}`}>
+                  <NavLink className="productLink" to={`/products/${product._id}`}>
                     Buy Now
                   </NavLink>
                 </div>

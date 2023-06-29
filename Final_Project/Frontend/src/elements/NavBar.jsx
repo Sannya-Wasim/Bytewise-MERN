@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DropDown from "./Dropdown";
 import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux';
 
 const NavBar = ({name}) => {
   const productItems = ["Food Products", "Accessories", "Toys"];
@@ -9,6 +10,8 @@ const NavBar = ({name}) => {
 
   const [showProductsDropDown, setProductsDropDown] = useState(false);
   const [showPetsDropDown, setPetsDropDown] = useState(false);
+
+  const {cartTotalQuantity} = useSelector((item)=>item.cart)
 
   return (
     <nav id="navigation-bar">
@@ -37,7 +40,9 @@ const NavBar = ({name}) => {
         {/* {
           Name ? <li>{Name}</li> : null
         } */}
-        
+        <li>
+          <Link to='/cart'>Cart {cartTotalQuantity}</Link>
+        </li>
       </ul>
     </nav>
   );

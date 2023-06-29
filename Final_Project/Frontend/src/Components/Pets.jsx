@@ -81,7 +81,7 @@ function Pets() {
                 <div>
                   <h5>{pet.title.substring(0, 12)}...</h5>
                   <p style={{ marginBottom: "1rem" }}>${pet.price}</p>
-                  <NavLink className="productLink" to={`${pet.id}`}>
+                  <NavLink className="productLink" to={`/pets/${pet._id}`}>
                     Buy Now
                   </NavLink>
                 </div>

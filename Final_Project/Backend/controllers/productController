@@ -1,5 +1,6 @@
 const Products = require('../models/Products.js')
 const Pets = require('../models/Pets.js')
+const Order = require("../models/Order");
 
 const productController = require('express').Router();
 
@@ -20,5 +21,51 @@ productController.get('/pets', async(req,res)=>{
         throw new Error(error)
     }
 })
+
+productController.get('/products/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await Products.findById(id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json(product);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+productController.get('/pets/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const pet = await Pets.findById(id);
+    if (!pet) {
+      return res.status(404).json({ error: 'Pet not found' });
+    }
+    res.json(pet);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+productController.post("/orders", async (req, res) => {
+  try {
+    const { user, items, totalPrice } = req.body;
+    if (!user || !items || !totalPrice) {
+      return res.json({ msg: "Missing required fields!" });
+    }
+    const order = new Order({
+      user,
+      items,
+      totalPrice,
+    });
+    const savedOrder = await order.save();
+    res.status(201).json(savedOrder);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to create order" });
+  }
+});
+
 
 module.exports = productController;
