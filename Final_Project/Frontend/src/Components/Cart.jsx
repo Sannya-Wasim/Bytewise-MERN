@@ -1,21 +1,24 @@
 import React from "react";
 import Navbar from "../elements/NavBar";
 import "./Cart.css";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   addToCart,
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
+  resetCart
 } from "../redux/cartSlice.js";
 
 const Cart = () => {
   const { cartItems, cartTotalAmount, cartTotalQuantity } = useSelector(
     (item) => item.cart
   );
-  console.log(cartItems);
+  // console.log(cartItems);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const username = useSelector((state)=> state.user.username)
 
   const handleRemove = (item) => {
     dispatch(removeFromCart(item));
@@ -31,6 +34,44 @@ const Cart = () => {
     dispatch(decreaseQuantity(item));
     console.log(cartItems);
   };
+
+  const handleCheckout = async(item) => {
+    try {
+      const orderData = {
+        user: username,
+        items: cartItems.map((item) => ({
+          product: item._id,
+          quantity: item.cartTotalQuantity,
+        })),
+        totalPrice: cartTotalAmount,
+        date: new Date().toISOString(),
+      };
+      // console.log('Order data', orderData)
+
+      const response = await fetch('http://localhost:5000/api/order', {
+        headers : {
+          'Content-Type':'application/json',
+        },
+        method : 'POST',
+        body : JSON.stringify(orderData)
+      })
+      if (response.ok) {
+        // Order created successfully
+        console.log("Order created successfully");
+        // const data = await response.json()
+        // console.log(data)
+        // Dispatch actions to reset the cart or perform any other necessary tasks
+        dispatch(resetCart());
+        navigate("/"); // Redirect to success page or any other page
+      } else {
+        console.log("Failed to create order");
+        // Handle error case
+      }
+    } catch (error) {
+      console.log("Error creating order", error);
+      // Handle error case
+    }
+  }
 
   return (
     <div>
@@ -125,7 +166,7 @@ const Cart = () => {
               </p>
             </div>
           </div>
-          <button className="checkout-button">Checkout</button>
+          <button className="checkout-button" onClick={()=>handleCheckout(cartItems)}>Checkout</button>
         </div>
       </div>
     </div>

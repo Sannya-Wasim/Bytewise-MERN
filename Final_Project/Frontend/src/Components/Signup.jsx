@@ -4,6 +4,8 @@ import copy from "../assets/images/logo copy.png";
 import NavBar from "../elements/NavBar";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/userSlice.js";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -12,6 +14,7 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -26,8 +29,12 @@ function SignUp() {
         body: JSON.stringify({ username, email, password }),
       });
       if (res.status !== 200) throw new Error("Wrong Credentials!");
+      
       const data = await res.json();
-      console.log(data);
+      console.log(data.others.username);
+
+      dispatch(setUser(data.others.username));
+
       navigate("/");
     } catch (error) {
       setError((prev) => true);

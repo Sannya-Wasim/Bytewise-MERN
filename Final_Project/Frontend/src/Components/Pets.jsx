@@ -13,7 +13,7 @@ function Pets() {
   useEffect(() => {
     const getPets = async () => {
       setLoading(true);
-        const response = await fetch("http://localhost:5000/api/pets");
+        const response = await fetch("http://localhost:5000/api/products/pets");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());

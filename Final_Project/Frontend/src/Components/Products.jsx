@@ -13,7 +13,7 @@ function Products() {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("http://localhost:5000/api/products");
+      const response = await fetch("http://localhost:5000/api/products/products");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
