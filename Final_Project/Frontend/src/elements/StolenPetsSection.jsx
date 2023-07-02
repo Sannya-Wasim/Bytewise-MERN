@@ -2,30 +2,42 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import { NavLink } from "react-router-dom";
 import report from "../assets/images/report.png";
-import Axios from "axios";
 
 function Stolen() {
   const [name, setName] = useState("");
   const [petName, setPetName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSubmitReport = () => {
-    Axios.post(`http://localhost:5000/stolen`, {
-      name,
-      petName,
-      phone,
-      location,
-      date,
-      description,
-    });
+  const handleSubmitReport = async (req, res) => {
+    const report = {
+      name: name,
+      email: email,
+      petName: petName,
+      location: location,
+      description: description,
+      date: date,
+    };
+    try {
+      const response = await fetch(`http://localhost:5000/api/report`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(report)
+      });
+      if (response.ok){
+        console.log('Report created successfully')
+      }
+    } catch (error) {
+      console.log('Error creating report', error)
+    }
   };
 
   return (
     <div>
-      
       <div id="background">
         <section className="logo" style={{ width: "22%" }}>
           <div id="content">
@@ -55,9 +67,9 @@ function Stolen() {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Enter your phone number"
+                      placeholder="Enter your email"
                       onChange={(e) => {
-                        setPhone(e.target.value);
+                        setEmail(e.target.value);
                       }}
                     />
                   </div>
@@ -93,7 +105,7 @@ function Stolen() {
                     <input
                       type="date"
                       className="form-control"
-                      placeholder="Last day you them"
+                      placeholder="Last day you saw them"
                       onChange={(e) => {
                         setDate(e.target.value);
                         console.log(e.target.value);

@@ -1,18 +1,21 @@
 import { useState } from "react";
-import DropDown from "./Dropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
-  const productItems = ["Food Products", "Accessories", "Toys"];
-  const petItems = ["Cats", "Dogs", "Parrots"];
   const username = useSelector((state) => state.user.username);
   // console.log(username)
-
-  const [showProductsDropDown, setProductsDropDown] = useState(false);
-  const [showPetsDropDown, setPetsDropDown] = useState(false);
+  const navigate = useNavigate();
 
   const { cartTotalQuantity } = useSelector((item) => item.cart);
+
+  const handleLogout= ()=>{
+    const confirmLogout = window.confirm("Do you want to logout?");
+    if (confirmLogout) {
+      dispatch(logout());
+      navigate('/')
+    }
+  }
 
   return (
     <nav id="navigation-bar">
@@ -25,6 +28,9 @@ const NavBar = () => {
         </li>
         <li>
           <Link to="/pets">Pets</Link>
+        </li>
+        <li>
+          <Link to="/reports">Stolen Pets</Link>
         </li>
         <li>
           <Link to="/contact">Contact Us</Link>
@@ -43,8 +49,9 @@ const NavBar = () => {
         ) : (
           <>
             <li>
-              <Link className="button">{username}</Link>
+              <Link className="button" onClick={()=>handleLogout()}>{username}</Link>
             </li>
+            <li><Link to='/orders'>Orders</Link></li>
             <li>
               <Link to="/cart">
                 Cart <span id="cart-span">{cartTotalQuantity}</span>
@@ -52,7 +59,6 @@ const NavBar = () => {
             </li>
           </>
         )}
-        <li><Link to='/orders'>Orders</Link></li>
       </ul>
     </nav>
   );

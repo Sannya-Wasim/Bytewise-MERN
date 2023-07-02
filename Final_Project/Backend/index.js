@@ -7,6 +7,7 @@ const app = express();
 const authController = require("./controllers/authController");
 const productController = require("./controllers/productController");
 const orderController = require("./controllers/orderController");
+const reportController = require('./controllers/reportController');
 
 const customCron = require("./cron/cron");
 const { sendCustomMail } = require("./cron/cron");
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authController);
 app.use("/api/products", productController);
 app.use("/api/order", orderController);
+app.use("/api/report", reportController)
 
 // Cron job
 customCron.sendCustomMail();

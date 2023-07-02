@@ -10,6 +10,7 @@ import Product from "./Components/Product";
 import Pet from "./Components/Pet";
 import Cart from './Components/Cart';
 import Orders from './Components/Orders'
+import Reports from './Components/Reports'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/pets/:id" element={<Pet />}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
         <Route path='/orders' element={<Orders/>}></Route>
+        <Route path='/reports' element={<Reports/>}></Route>
       </Routes>
     </div>
   );
