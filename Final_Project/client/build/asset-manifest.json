@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c023dea0.css",
+    "main.js": "/static/js/main.dcf24504.js",
+    "static/media/cover.jpg": "/static/media/cover.ccd3f417b6ec0a790112.jpg",
+    "static/media/adoptPet.jpg": "/static/media/adoptPet.b09205b459f8c76f9e3e.jpg",
+    "static/media/petFood.png": "/static/media/petFood.9a7eadab86cbf2b19875.png",
+    "static/media/accessories.jpg": "/static/media/accessories.ad636f1e1236c5a345d1.jpg",
+    "static/media/stolen.jpg": "/static/media/stolen.d47ec5d10f795149c282.jpg",
+    "static/media/petpic.jpg": "/static/media/petpic.0ecfcbbd8a7900202f93.jpg",
+    "static/media/logo copy.png": "/static/media/logo copy.15ac993c2c892df902df.png",
+    "index.html": "/index.html",
+    "main.c023dea0.css.map": "/static/css/main.c023dea0.css.map",
+    "main.dcf24504.js.map": "/static/js/main.dcf24504.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c023dea0.css",
+    "static/js/main.dcf24504.js"
+  ]
+}

@@ -1,0 +1,23 @@
+.About{
+    display: flex;
+}
+
+.left {
+    box-shadow: 0px 0px 2px 2px gainsboro;
+    width: 87vh;
+    height: 65vh;
+    margin: 32px 0px 10px 40px;
+    border-radius: 20px;
+}
+
+.left img {
+    width: 87vh;
+    height: 65vh;
+    border-radius: 20px;
+}
+
+.right{
+    width: 40%;
+    margin: 4.5rem 2rem;
+    font-size: 22px;
+}

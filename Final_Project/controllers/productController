@@ -1,0 +1,51 @@
+const Products = require('../models/Products.js')
+const Pets = require('../models/Pets.js')
+const Order = require("../models/Order");
+
+const productController = require('express').Router();
+
+productController.get('/products', async(req,res)=>{
+    try {
+        const products = await Products.find();
+        res.json(products)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+productController.get('/pets', async(req,res)=>{
+    try {
+        const pets = await Pets.find();
+        res.json(pets)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+productController.get('/products/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await Products.findById(id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json(product);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+productController.get('/pets/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const pet = await Pets.findById(id);
+    if (!pet) {
+      return res.status(404).json({ error: 'Pet not found' });
+    }
+    res.json(pet);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = productController;

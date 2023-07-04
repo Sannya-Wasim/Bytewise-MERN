@@ -1,0 +1,106 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#bg {
+    /* https://webkit.org/blog/1424/css3-gradients/ */
+    background: -webkit-linear-gradient(left, rgba(34,193,195,1) 0%,rgba(253,187,45,1) 100%);
+    border-radius: 30px;
+    height: 80vh;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    width: 80%;
+}
+
+.logo {
+    width: 35%;
+    height: 500px;
+    /* border: 2px solid black; */
+}
+
+.logo img {
+    /* https://www.demo2s.com/html-css/css-animate-to-move-image-up-and-down.html */
+    position: relative;
+    animation: glide 2s ease-in-out alternate infinite;
+}
+
+    @keyframes glide {
+        from {
+        left: 0px;
+        top: 0px;
+        }
+
+        to {
+        left: 0px;
+        top: 20px;
+        }
+    }
+
+    #content {
+        margin-top: 80px;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .login {
+        background-color: white;
+        width: 60%;
+        height: 350px;
+        /* border: 2px solid black; */
+        margin: auto;
+        border-radius: 20px;
+    }
+
+    #content1 {
+        /* border: 2px solid black; */
+        text-align: center;
+    }
+
+    #content1 h2 {
+        font-size: 40px;
+        /* border: 2px solid yellow; */
+        color: rgb(32, 32, 143);
+    }
+
+    #content1 form {
+        /* border: 2px solid red; */
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+    .form input {
+        padding: 12px;
+        margin: 8px;
+        background-color: gainsboro;
+        width: 60vh;
+        border-radius: 20px;
+        border: none;
+    }
+
+    .labels {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        margin-left: 150px;
+        width: 60vh;
+    }
+
+
+    #checkbox {
+        width: 50%;
+    }
+
+    #btn {
+        width: 50%;
+    }
+
+    #btn button {
+        width: 50%;
+        height: 36px;
+        border-radius: 20px;
+        border: none;
+        background-color: rgba(14, 184, 240, 0.863);
+        color: white;
+    }
